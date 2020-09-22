@@ -12,16 +12,17 @@ export default async function validateFields(
 
   const schema = Yup.object().shape({
     email: Yup.string()
-      .required('O campo email é obrigatório')
-      .email('O campo email deve ser um email válido'),
-    password: Yup.string().min(8, 'A senha deve conter no mínimo 8 dígitos')
+      .required('Email field can not be empty')
+      .email('Email field must be a valid email'),
+    password: Yup.string()
+      .min(8, 'Password must be at least 8 characters long')
+      .required('Password field can not be empty')
   })
 
   try {
     await schema.validate(userData)
     next()
   } catch (err) {
-    console.log(err)
     throw new AppError(err.errors[0])
   }
 }
