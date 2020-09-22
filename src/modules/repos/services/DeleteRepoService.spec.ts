@@ -6,14 +6,16 @@ import CreateUserService from '@modules/users/services/CreateUserService'
 import FakeRepoRepository from '../repositories/fakes/FakeRepoRepository'
 import IRepoRepository from '../repositories/IRepoRepository'
 import CreateReposService from './CreateReposService'
+import DeleteRepoService from './DeleteRepoService'
 
 let createRepo: CreateReposService
 let fakeRepoRepository: IRepoRepository
 let fakeUsersRepository: IUserRepository
 let createUser: CreateUserService
 let fakeHashProvider: IHashProvider
+let deleteRepo: DeleteRepoService
 
-describe('CreateRepo', () => {
+describe('DeleteRepo', () => {
   beforeEach(() => {
     fakeRepoRepository = new FakeRepoRepository()
     createRepo = new CreateReposService(fakeRepoRepository)
@@ -22,19 +24,25 @@ describe('CreateRepo', () => {
     fakeHashProvider = new FakeHashProvider()
 
     createUser = new CreateUserService(fakeUsersRepository, fakeHashProvider)
+    deleteRepo = new DeleteRepoService(fakeRepoRepository)
   })
 
-  it('should be able to create a Repository', async () => {
+  it('should be able to delete a Repository', async () => {
+    const fakeDeleteRepo = jest.spyOn(fakeRepoRepository, 'delete')
+
     const user = await createUser.execute({
       email: 'johndoe@example.com',
       password: '12345678'
     })
+
     const repo = await createRepo.execute({
       title: 'example',
       url: 'www.example.com',
       user_id: user.id
     })
 
-    expect(repo).toHaveProperty('id')
+    await deleteRepo.execute(repo.id)
+
+    expect(fakeDeleteRepo).toHaveBeenCalledWith(repo.id)
   })
 })

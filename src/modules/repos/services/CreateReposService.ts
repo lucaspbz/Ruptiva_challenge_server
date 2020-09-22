@@ -1,14 +1,17 @@
-import CreateReposService from './CreateReposService.spec'
+import { inject, injectable } from 'tsyringe'
+import ICreateRepoDTO from '../dtos/ICreateRepoDTO'
+import IRepoRepository from '../repositories/IRepoRepository'
 
-let createRepo: CreateReposService
-describe('CreateRepo', () => {
-  beforeEach(() => {
-    createRepo = new CreateReposService()
-  })
+@injectable()
+export default class CreateReposService {
+  constructor(
+    @inject('ReposRepository')
+    private reposRepository: IRepoRepository
+  ) {}
 
-  it('should be able to create a Repository', async () => {
-    const repo = await createRepo.execute()
+  public async execute({ title, url, user_id }: ICreateRepoDTO) {
+    const repo = await this.reposRepository.create({ user_id, url, title })
 
-    expect(repo).toHaveProperty('id')
-  })
-})
+    return repo
+  }
+}
