@@ -1,6 +1,6 @@
 {
-  "type": "sqlite3",
-  "database": "./database.sql",
+  "type": "sqlite",
+  "database": "./database.db",
   "entities": ["./src/modules/**/infra/typeorm/entities/*.ts"],
   "migrations": ["./src/shared/infra/typeorm/migrations/*.ts"],
   "cli": {
