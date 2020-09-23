@@ -14,7 +14,7 @@ interface IRequest {
 }
 
 interface IResponse {
-  user: User
+  user: Omit<User, 'password'>
   token: string
 }
 
@@ -25,7 +25,7 @@ export default class AuthenticateUserService {
     private usersRepository: IUserRepository,
     @inject('HashProvider')
     private hashProvider: IHashProvider
-  ) {}
+  ) { }
 
   public async execute({ email, password }: IRequest): Promise<IResponse> {
     const user = await this.usersRepository.findByEmail(email)
@@ -50,6 +50,8 @@ export default class AuthenticateUserService {
       expiresIn
     })
 
-    return { user, token }
+    const { password: whatever, ...userWithoutPassword } = user
+
+    return { user: userWithoutPassword, token }
   }
 }
