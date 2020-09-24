@@ -30,7 +30,6 @@ describe('CreateRepo', () => {
       password: '12345678'
     })
     const repo = await createRepo.execute({
-      url: 'www.example.com',
       user_id: user.id,
       description: 'test description',
       full_name: 'user/repo_name',
