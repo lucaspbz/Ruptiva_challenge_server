@@ -13,7 +13,7 @@ export default class CreateUserService {
 
     @inject('HashProvider')
     private hashProvider: IHashProvider
-  ) {}
+  ) { }
   public async execute({ email, password }: ICreateUsersDTO) {
     const userExists = await this.usersRepository.findByEmail(email)
 
@@ -25,6 +25,8 @@ export default class CreateUserService {
       email,
       password: await this.hashProvider.generateHash(password)
     })
-    return user
+
+    const { password: empty, ...userWithoutPassword } = user
+    return userWithoutPassword
   }
 }

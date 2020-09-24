@@ -11,10 +11,8 @@ export default async function validateFields(
   const userData: ICreateRepoDTO = request.body
 
   const schema = Yup.object().shape({
-    title: Yup.string().required('Title field can not be empty'),
-    url: Yup.string()
-      .required('Url field can not be empty')
-      .url('Url field must be a valid url')
+    full_name: Yup.string().required('full_name field can not be empty'),
+
   })
 
   try {

@@ -18,13 +18,13 @@ export default class Repo {
   full_name: string
 
   @Column()
-  description: string
+  description?: string
 
   @Column()
-  owner_login: string
+  owner_login?: string
 
   @Column()
-  owner_avatar_url: string
+  owner_avatar_url?: string
 
   @CreateDateColumn()
   created_at: Date

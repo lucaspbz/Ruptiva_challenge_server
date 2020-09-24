@@ -11,11 +11,11 @@ reposRouter.use(ensureAuthenticated)
 
 reposRouter.post('/', validateFields, async (request, response) => {
   const { id } = request.user
-  const { title, url } = request.body
+  const { description, full_name, owner_avatar_url, owner_login } = request.body
 
   const createRepo = container.resolve(CreateReposService)
 
-  const repo = await createRepo.execute({ title, url, user_id: id })
+  const repo = await createRepo.execute({ user_id: id, description, full_name, owner_avatar_url, owner_login })
 
   return response.json(repo)
 })

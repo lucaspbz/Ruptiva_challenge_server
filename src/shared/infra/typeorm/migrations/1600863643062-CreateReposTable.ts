@@ -23,11 +23,11 @@ export class CreateReposTable1600863643062 implements MigrationInterface {
 
           { name: 'full_name', type: 'varchar' },
 
-          { name: 'description', type: 'varchar' },
+          { name: 'description', type: 'varchar', isNullable: true },
 
-          { name: 'owner_login', type: 'varchar' },
+          { name: 'owner_login', type: 'varchar', isNullable: true },
 
-          { name: 'owner_avatar_url', type: 'varchar' },
+          { name: 'owner_avatar_url', type: 'varchar', isNullable: true },
 
           {
             name: 'created_at',
