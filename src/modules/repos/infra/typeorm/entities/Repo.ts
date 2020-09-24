@@ -15,10 +15,16 @@ export default class Repo {
   user_id: string
 
   @Column()
-  title: string
+  full_name: string
 
   @Column()
-  url: string
+  description: string
+
+  @Column()
+  owner_login: string
+
+  @Column()
+  owner_avatar_url: string
 
   @CreateDateColumn()
   created_at: Date

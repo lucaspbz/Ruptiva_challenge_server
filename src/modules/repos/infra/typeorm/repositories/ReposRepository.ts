@@ -11,8 +11,8 @@ export default class ReposRepository implements IRepoRepository {
     this.ormRepository = getRepository(Repo)
   }
 
-  public async create({ title, url, user_id }: ICreateRepoDTO): Promise<Repo> {
-    const repo = this.ormRepository.create({ title, url, user_id })
+  public async create(repoData: ICreateRepoDTO): Promise<Repo> {
+    const repo = this.ormRepository.create(repoData)
 
     await this.ormRepository.save(repo)
 

@@ -21,9 +21,13 @@ export class CreateReposTable1600863643062 implements MigrationInterface {
 
           { name: 'user_id', type: 'uuid', isNullable: true },
 
-          { name: 'title', type: 'varchar' },
+          { name: 'full_name', type: 'varchar' },
 
-          { name: 'url', type: 'varchar' },
+          { name: 'description', type: 'varchar' },
+
+          { name: 'owner_login', type: 'varchar' },
+
+          { name: 'owner_avatar_url', type: 'varchar' },
 
           {
             name: 'created_at',

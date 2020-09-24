@@ -7,10 +7,10 @@ export default class CreateReposService {
   constructor(
     @inject('ReposRepository')
     private reposRepository: IRepoRepository
-  ) {}
+  ) { }
 
-  public async execute({ title, url, user_id }: ICreateRepoDTO) {
-    const repo = await this.reposRepository.create({ user_id, url, title })
+  public async execute(repoData: ICreateRepoDTO) {
+    const repo = await this.reposRepository.create(repoData)
 
     return repo
   }

@@ -30,9 +30,12 @@ describe('CreateRepo', () => {
       password: '12345678'
     })
     const repo = await createRepo.execute({
-      title: 'example',
       url: 'www.example.com',
-      user_id: user.id
+      user_id: user.id,
+      description: 'test description',
+      full_name: 'user/repo_name',
+      owner_avatar_url: 'http://url.com.br',
+      owner_login: 'example_owner',
     })
 
     expect(repo).toHaveProperty('id')
