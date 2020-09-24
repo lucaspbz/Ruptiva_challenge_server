@@ -23,7 +23,7 @@ describe('ListUserRepos', () => {
         fakeHashProvider = new FakeHashProvider()
 
         createUser = new CreateUserService(fakeUsersRepository, fakeHashProvider)
-        listUserRepos = new ListUsersReposService()
+        listUserRepos = new ListUsersReposService(fakeRepoRepository)
     })
     it('should be able to list a user repositories', async () => {
         const user = await createUser.execute({
@@ -38,7 +38,7 @@ describe('ListUserRepos', () => {
             owner_login: 'example_owner',
         })
 
-        const repos = await listUserRepos.execute()
+        const repos = await listUserRepos.execute(user.id)
 
         expect(repos).toHaveLength(1)
     })
