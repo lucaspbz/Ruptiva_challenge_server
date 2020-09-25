@@ -5,6 +5,7 @@ import CreateReposService from '@modules/repos/services/CreateReposService'
 import ensureAuthenticated from '@modules/users/infra/http/middlewares/ensureAuthenticated'
 import validateFields from '@modules/repos/infra/http/middlewares/validateFields'
 import ListUsersReposService from '@modules/repos/services/ListUserReposService'
+import DeleteRepoService from '@modules/repos/services/DeleteRepoService'
 
 const reposRouter = Router()
 
@@ -29,6 +30,16 @@ reposRouter.get('/', async (request, response) => {
   const repos = await listRepos.execute(id)
 
   return response.json(repos)
+})
+
+reposRouter.delete('/:id', async (request, response) => {
+  const { id } = request.params
+
+  const deleteRepo = container.resolve(DeleteRepoService)
+
+  await deleteRepo.execute(id)
+
+  response.send()
 })
 
 
