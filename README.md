@@ -6,21 +6,21 @@ Esse servidor possui autenticação com JWT.
 
 Rotas:
 
-*/users 
- *POST - Criação do usuário. Espera um email válido e uma senha de pelo menos 8 digitos. Retorna o usúario criado 
+* /users 
+	* POST - Criação do usuário. Espera um email válido e uma senha de pelo menos 8 digitos. Retorna o usúario criado 
 
-*/session 
- *POST - Faz autenticação na aplicação. Espera um email e senha de um usuário já criados. Retorna o usuário e um token JWT caso email e senha estejam corretos.
+* /session 
+	* POST - Faz autenticação na aplicação. Espera um email e senha de um usuário já criados. Retorna o usuário e um token JWT caso email e senha estejam corretos.
 
-*/repos
- *POST - Criação de repositório baseado em repositórios do github. 
+* /repos
+	* POST - Criação de repositório baseado em repositórios do github. 
     Espera os seguintes parâmetros:
-        *token - enviado pela requisição como bearer token
-        *full_name
-	    *description
-	    *owner_login
-	    *owner_avatar_url
- *DELETE/id -Delete um repositório. Espera o token de autenticação (apenas usuários autenticados podem excluir um repositório) e o id do repositório a ser deletado.
+		* token - enviado pela requisição como bearer token
+		* full_name
+		* description
+		* owner_login
+		* owner_avatar_url
+	* DELETE/id -Delete um repositório. Espera o token de autenticação (apenas usuários autenticados podem excluir um repositório) e o id do repositório a ser deletado.
 
 
 
