@@ -13,6 +13,7 @@ Rotas:
 	* POST - Faz autenticação na aplicação. Espera um email e senha de um usuário já criados. Retorna o usuário e um token JWT caso email e senha estejam corretos.
 
 * /repos
+    * GET - Listagem de repositórios de um usuário específico. Espera o envio do token de autenticação como bearer token.
 	* POST - Criação de repositório baseado em repositórios do github. 
     Espera os seguintes parâmetros:
 		* token - enviado pela requisição como bearer token
