@@ -1,6 +1,7 @@
 ### Descrição:
 
-Servidor desenvolvido em Node.JS usando Typescript e Express para desafio de processo seletivo.  
+Servidor desenvolvido em Node.JS usando Typescript e Express para desafio de processo seletivo.
+Procurei seguir alguns princípios de DDD e TDD durante o desenvolvimento e arquitetura deste serviço.
 
 Esse servidor possui autenticação com JWT.  
 
