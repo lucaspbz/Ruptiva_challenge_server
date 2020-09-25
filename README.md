@@ -29,10 +29,10 @@ Rotas:
 
 ### Como executar o projeto:
 
-Faça o clone do repositório com o link => https://github.com/lucaspbz/Ruptiva_challenge_server.git  
+Faça o clone do repositório com esse [link](https://github.com/lucaspbz/Ruptiva_challenge_server.git).
 
 Abra seu terminal na pasta raiz do projeto e rode o comando "yarn" ou "npm install" para instalar as dependências.  
 
 Rode o comando "yarn dev:server" ou "npm run dev:server" para iniciar o servidor.  
 
-Siga para https://github.com/lucaspbz/Ruptiva_challenge_web para baixar e instalar a aplicação web.
+Siga para [aqui](https://github.com/lucaspbz/Ruptiva_challenge_web) para baixar e instalar a aplicação web.
